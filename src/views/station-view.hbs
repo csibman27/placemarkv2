@@ -1,0 +1,31 @@
+{{> menu}}
+
+<form class="box"  action="/station/{{placemark._id}}/updatestation/{{station._id}}" method="POST">
+    <label>Update Station Details:</label>
+    <div class="field is-horizontal">
+        <div class="field-body">
+            <div class="field">
+                <input class="input" type="text" name="title", value="{{station.title}}">
+            </div>
+            <div class="field">
+                <input class="input" type="text" name="lat", value="{{station.lat}}">
+            </div>
+            <div class="field">
+                <input class="input" type="text" name="lng", value="{{station.lng}}">
+            </div>
+            <div class="field">
+                <input class="input" type="text" name="category", value="{{station.category}}">
+            </div>
+            <div class="field">
+                <input class="input" type="text" name="description" value="{{station.description}}">
+            </div>
+            <div class="field">
+                <input class="input" type="text"  name="unleaded_price" value="{{station.unleaded_price}}">
+            </div>
+            <div class="field">
+                <input class="input" type="text"  name="diesel_price" value="{{station.diesel_price}}">
+            </div>
+        </div>
+    </div>
+    <button class="button is-primary">Update Station</button>
+</form>

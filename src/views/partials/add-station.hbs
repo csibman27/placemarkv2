@@ -1,0 +1,29 @@
+<form class="box" action="/placemark/{{placemark._id}}/addstation" method="POST">
+    <label>Enter Station Details:</label>
+    <div class="field is-horizontal">
+        <div class="field-body">
+            <div class="field">
+                <input class="input" type="text" placeholder="Enter place name" name="title">
+            </div>
+            <div class="field">
+                <input class="input" type="text" placeholder="Enter Latitude" name="lat">
+            </div>
+            <div class="field">
+                <input class="input" type="text" placeholder="Enter Longitude" name="lng">
+            </div>
+            <div class="field">
+                <input class="input" type="text" placeholder="Enter Category" name="category">
+            </div>
+            <div class="field">
+                <input class="input" type="text" placeholder="Enter Description" name="description">
+            </div>
+            <div class="field">
+                <input class="input" type="text" placeholder="Enter unleaded price" name="unleaded_price">
+            </div>
+            <div class="field">
+                <input class="input" type="text" placeholder="Enter diesel price" name="diesel_price">
+            </div>
+        </div>
+    </div>
+    <button class="button is-primary">Add Station</button>
+</form>

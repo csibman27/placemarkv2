@@ -1,0 +1,14 @@
+{{> menu}}
+
+<section class="section columns is-vcentered">
+    <div class="column has-text-centered">
+        <div class="title">
+            {{placemark.title}}
+        </div>
+        {{> list-stations }}
+        {{> add-station }}
+    </div>
+    <div class="column">
+        {{> placemark-image }}
+    </div>
+</section>

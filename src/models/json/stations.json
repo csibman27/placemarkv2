@@ -1,0 +1,48 @@
+{
+  "stations": [
+    {
+      "title": "Maxoil",
+      "lat": 52.1234,
+      "lng": 7.2922,
+      "category": "station only",
+      "description": "Roothouse",
+      "unleaded_price": 1.20,
+      "diesel_price": 1.15,
+      "_id": "7687bdff-fd61-4853-854c-10cedfee61a6",
+      "placemarkid": "da614dae-4c25-4c8e-8d35-28ffcbebbea6"
+    },
+    {
+      "title": "Texaco",
+      "lat": 53.4234,
+      "lng": 7.2022,
+      "category": "station only",
+      "description": "Billing",
+      "unleaded_price": 2.30,
+      "diesel_price": 1.35,
+      "_id": "3ed61912-8f87-407b-bd58-f911cffe92aa",
+      "placemarkid": "da614dae-4c25-4c8e-8d35-28ffcbebbea6"
+    },
+    {
+      "title": "Shell",
+      "lat": 51.1214,
+      "lng": 8.2322,
+      "category": "station only",
+      "description": "Ballyboard",
+      "unleaded_price": 2.40,
+      "diesel_price": 1.29,
+      "_id": "2b02c255-84f1-43b1-b80e-15af7fd7b6d0",
+      "placemarkid": "da614dae-4c25-4c8e-8d35-28ffcbebbea6"
+    },
+    {
+      "title": "Applegreen",
+      "lat": 52.4434,
+      "lng": 7.4942,
+      "category": "station & deli",
+      "description": "Downtown",
+      "unleaded_price": 1.90,
+      "diesel_price": 1.41,
+      "_id": "6a33eced-3f76-4e58-a72b-7981ff527dbe",
+      "placemarkid": "da614dae-4c25-4c8e-8d35-28ffcbebbea6"
+    }
+  ]
+}

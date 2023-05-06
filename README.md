@@ -1,4 +1,4 @@
-# Palcemark for Petrol Stations
+# Placemark for Petrol Stations
 
 # [Render cloud host](https://placemark-stations.onrender.com/)
 

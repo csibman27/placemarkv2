@@ -1,0 +1,50 @@
+<table class="table is-fullwidth">
+    <thead>
+    <tr>
+        <th>Station Name</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Unleaded price</th>
+        <th>Diesel price</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each placemark.stations}}
+        <tr>
+            <td>
+                {{title}}
+            </td>
+            <td>
+                {{lat}}
+            </td>
+            <td>
+                {{lng}}
+            </td>
+            <td>
+                {{category}}
+            </td>
+            <td>
+                {{description}}
+            </td>
+            <td>
+                {{unleaded_price}}
+            </td>
+            <td>
+                {{diesel_price}}
+            </td>
+            <td>
+                <a href="/station/{{../placemark._id}}/editstation/{{_id}}" class="ui icon button">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>
+            <td>
+                <a href="/placemark/{{../placemark._id}}/deletestation/{{_id}}" class="ui icon button">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

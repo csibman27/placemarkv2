@@ -1,0 +1,20 @@
+{{> menu active="about"}}
+<section class="hero">
+    <div class="hero-body has-text-centered">
+        <p class="title ">
+            Placemark : Please find us on map </p>
+        <p class="box">
+        <iframe
+                width="600"
+                height="450"
+                style="border:4px"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJMUHdEBPEQkgR_nw_8dzwQkA&key={{process.env.API_KEY}}">
+        </iframe>
+        </p>
+    </div>
+    {{> add-message }}
+    {{> list-messages }}
+</section>

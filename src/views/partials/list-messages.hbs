@@ -1,0 +1,23 @@
+<details class="details-reset details-overlay position-relative mt-1 mt-lg-0 ml-1" id="sort-options">
+    <summary aria-haspopup="true" data-view-component="true" class="btn">    <span><h2>Show or Hide Comments</h2></span>
+        <span class="dropdown-caret"></span>
+    </summary>            <details-menu class="SelectMenu right-lg-0">
+    <div class="SelectMenu-modal">
+        <div class="SelectMenu-list">
+            <label class="SelectMenu-item" role="menuitemradio" aria-checked="true" tabindex="0">
+                <input type="radio" name="sort" id="sort_" value="" hidden="hidden" data-autosubmit="true" checked="checked" />
+                <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+                </svg>
+                <div class="box box-link-hover-shadow d-none d-lg-block d-print-block">
+                    {{#each message}}
+                        <p class="text">
+                        <p> <i class="fas fa-angle-right"></i> {{messageText}} </p>
+                        </p>
+                    {{/each}}
+                </div>
+            </label>
+        </div>
+    </div>
+</details-menu>
+</details>
+
