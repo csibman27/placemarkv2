@@ -51,9 +51,10 @@ export const accountsController = {
     handler: async function (request, h) {
       const { email, password } = request.payload;
       const user = await db.userStore.getUserByEmail(email);
-      const passwordsMatch = await bcrypt.compare(password, user.password); // ADDED
-      // if (!user || user.password !== password) {                             // OLD
-      if (!user || !passwordsMatch) {
+      //const passwordsMatch = await bcrypt.compare(password, user.password); // ADDED
+      if (!user || user.password !== password) {
+        // OLD
+        // if (!user || !passwordsMatch) {
         // NEW ADDED
         // EDITED
         return h.redirect("/");
@@ -122,10 +123,13 @@ export const accountsController = {
       for (let i = 0; i < userStations.length; i += 1) {
         let userPlacemarks = [];
 
+        // eslint-disable-next-line no-await-in-loop
         userPlacemarks = await db.placemarkStore.getPlacemarksByStationId(userStations[i]._id);
         for (let k = 0; k < userPlacemarks.length; k += 1) {
+          // eslint-disable-next-line no-await-in-loop
           await db.placemarkStore.deletePlacemarkById(userPlacemarks[k]._id);
         }
+        // eslint-disable-next-line no-await-in-loop
         await db.stationStore.deleteStation(userStations[i]._id);
       }
       await db.userStore.deleteUserById(loggedInUser._id);

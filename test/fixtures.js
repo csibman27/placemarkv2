@@ -41,7 +41,10 @@ export const Bulls = {
 
 export const wideStations = {
   title: "Applegreen",
-  location: "abbyland",
+  lat: 51.76543,
+  lng: 7.23456,
+  category: "abbyland",
+  description: "98",
   unleaded_price: 1.23,
   diesel_price: 1.44,
 };
@@ -65,19 +68,28 @@ export const testPlacemarks = [
 export const testStations = [
   {
     title: "Amaran",
-    location: "Belphi",
+    lat: 51.76543,
+    lng: 7.23456,
+    category: "Belphi",
+    description: "23",
     unleaded_price: 1.11,
     diesel_price: 1.1,
   },
   {
     title: "Larossmax",
-    location: "westhead",
+    lat: 51.76543,
+    lng: 7.23456,
+    category: "westhead",
+    description: "23",
     unleaded_price: 1,
     diesel_price: 0.99,
   },
   {
     title: "Roll",
-    location: "westhead2",
+    lat: 51.76543,
+    lng: 7.23456,
+    category: "westhead2",
+    description: "23",
     unleaded_price: 1.01,
     diesel_price: 0.98,
   },
