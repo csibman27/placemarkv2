@@ -2,6 +2,7 @@ import Inert from "@hapi/inert";
 import Vision from "@hapi/vision";
 import Hapi from "@hapi/hapi";
 import Cookie from "@hapi/cookie";
+import Bell from "@hapi/bell";
 import dotenv from "dotenv";
 import path from "path";
 import Joi from "joi";
@@ -28,7 +29,7 @@ if (result.error) {
 const swaggerOptions = {
   info: {
     title: "Placemark API",
-    version: "2.0",
+    version: "1.0",
   },
   securityDefinitions: {
     jwt: {
@@ -42,7 +43,7 @@ const swaggerOptions = {
 
 async function init() {
   const server = Hapi.server({
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 4450,
     //tls: {
     //key: fs.readFileSync("keys/private/webserver.key"),
     //cert: fs.readFileSync("keys/webserver.crt"),
@@ -53,6 +54,7 @@ async function init() {
   await server.register(Vision);
   await server.register(Cookie);
   await server.register(jwt);
+  await server.register(Bell);
 
   await server.register([
     Inert,
@@ -90,6 +92,13 @@ async function init() {
     key: process.env.cookie_password,
     validate: validate,
     verifyOptions: { algorithms: ["HS256"] },
+  });
+  server.auth.strategy("github", "bell", {
+    provider: "github",
+    password: process.env.github_encryption_password,
+    isSecure: false,
+    clientId: process.env.github_client_id,
+    clientSecret: process.env.github_secret,
   });
   server.auth.default("session");
 

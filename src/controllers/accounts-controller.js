@@ -70,14 +70,6 @@ export const accountsController = {
     },
   },
 
-  async validate(request, session) {
-    const user = await db.userStore.getUserById(session.id);
-    if (!user) {
-      return { isValid: false };
-    }
-    return { isValid: true, credentials: user };
-  },
-
   loggedInUserDetails: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
@@ -135,6 +127,14 @@ export const accountsController = {
       await db.userStore.deleteUserById(loggedInUser._id);
       return h.redirect("/");
     },
+  },
+
+  async validate(request, session) {
+    const user = await db.userStore.getUserById(session.id);
+    if (!user) {
+      return { isValid: false };
+    }
+    return { isValid: true, credentials: user };
   },
 
   github: {

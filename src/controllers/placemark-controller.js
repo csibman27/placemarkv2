@@ -46,9 +46,7 @@ export const placemarkController = {
       return h.redirect(`/placemark/${placemark._id}`);
     },
   },
-  // async function addMarker("issmap", addStation) {
-
-}
+  // async function addMarker("issmap", addStation) {}
   uploadImage: {
     handler: async function (request, h) {
       try {
