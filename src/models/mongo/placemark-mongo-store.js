@@ -21,6 +21,7 @@ export const placemarkMongoStore = {
   async getPlacemarksByStationId(id) {
     const placemarks = await Placemark.find({ stationid: id }).lean();
     return placemarks;
+    // eslint-disable-next-line no-unreachable
     return true;
   },
 

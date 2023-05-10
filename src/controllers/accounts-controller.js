@@ -1,8 +1,8 @@
-import bcrypt from "bcrypt"; // ADDED
+import bcrypt from "bcrypt"; // ADDED hashing & salting
 import { UserSpec, UserCredentialsSpec, UserSpecPlus } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 
-const saltRounds = 10; // ADDED
+const saltRounds = 10; // ADDED hashing & salting
 
 export const accountsController = {
   index: {
@@ -28,7 +28,7 @@ export const accountsController = {
     },
     handler: async function (request, h) {
       const user = request.payload;
-      user.password = await bcrypt.hash(user.password, saltRounds); // ADDED
+      user.password = await bcrypt.hash(user.password, saltRounds); // ADDED hashing& salting
       await db.userStore.addUser(user);
       return h.redirect("/");
     },
@@ -51,11 +51,11 @@ export const accountsController = {
     handler: async function (request, h) {
       const { email, password } = request.payload;
       const user = await db.userStore.getUserByEmail(email);
-      //const passwordsMatch = await bcrypt.compare(password, user.password); // ADDED
-      if (!user || user.password !== password) {
-        // OLD
-        // if (!user || !passwordsMatch) {
-        // NEW ADDED
+      const passwordsMatch = await bcrypt.compare(password, user.password); // ADDED hashing & salting
+      // if (!user || user.password !== password) {
+      // OLD
+      if (!user || !passwordsMatch) {
+        // NEW STATEMENT ADDED
         // EDITED
         return h.redirect("/");
       }
@@ -134,6 +134,43 @@ export const accountsController = {
       }
       await db.userStore.deleteUserById(loggedInUser._id);
       return h.redirect("/");
+    },
+  },
+
+  github: {
+    auth: "github",
+    // eslint-disable-next-line consistent-return
+    handler: async function (request, h) {
+      if (!request.auth.isAuthenticated) {
+        return h.view("signup-view", { title: "Sign up error", errors: "Not logged in..." }).takeover().code(400);
+      }
+      // Check if the user logged in via Google
+      const creds = request.auth.credentials;
+      if (creds.provider === "github") {
+        let gitEmail = "";
+        // Check if email is public and not null
+        if (creds.profile.email != null) {
+          gitEmail = creds.profile.email;
+        } else {
+          gitEmail = `${creds.profile.username}@github`;
+        }
+        let user = await db.userStore.getUserByEmail(gitEmail);
+
+        // If the user is not registered, create a new user account
+        if (!user) {
+          user = await db.userStore.addUser({
+            firstName: creds.profile.displayName.split(" ")[0],
+            lastName: creds.profile.displayName.split(" ")[1],
+            email: gitEmail,
+            // // Set a default password for Google users (leter on we can generate a random one)
+            password: "github_password",
+          });
+        }
+
+        // Log in the user
+        request.cookieAuth.set({ id: user._id });
+        return h.redirect("/dashboard");
+      }
     },
   },
 };

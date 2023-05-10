@@ -19,6 +19,7 @@ export const analytics = {
     return totalUsers;
   },
 
+  // eslint-disable-next-line consistent-return
   async getCheapestPetrolPrice() {
     const stations = await db.stationStore.getAllStations();
     if (stations.length > 0) {
@@ -31,6 +32,7 @@ export const analytics = {
       return minPetrolPrice;
     }
   },
+  // eslint-disable-next-line consistent-return
   async getCheapestDieselPrice() {
     const stations = await db.stationStore.getAllStations();
     if (stations.length > 0) {

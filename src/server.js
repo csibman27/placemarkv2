@@ -27,8 +27,8 @@ if (result.error) {
 
 const swaggerOptions = {
   info: {
-    title: "Playtime API",
-    version: "0.1",
+    title: "Placemark API",
+    version: "2.0",
   },
   securityDefinitions: {
     jwt: {
