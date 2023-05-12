@@ -40,7 +40,7 @@ const swaggerOptions = {
   },
   security: [{ jwt: [] }],
 };
-
+/*
 async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 4450,
@@ -49,6 +49,11 @@ async function init() {
     //cert: fs.readFileSync("keys/webserver.crt"),
     //},
   });
+*/
+
+const server = Hapi.server({
+  port: process.env.PORT || 3000,
+});
 
   await server.register(Inert);
   await server.register(Vision);
@@ -114,4 +119,4 @@ process.on("unhandledRejection", (err) => {
   process.exit(1);
 });
 
-init();
+// init();
