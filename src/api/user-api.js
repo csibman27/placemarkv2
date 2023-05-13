@@ -1,8 +1,11 @@
+import bcrypt from "bcrypt";
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { UserCredentialsSpec, UserArray, UserSpec, IdSpec, UserSpecPlus, JwtAuth } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
 import { createToken } from "./jwt-utils.js";
+
+const saltRounds = 10;
 
 export const userApi = {
   find: {
@@ -43,6 +46,24 @@ export const userApi = {
     notes: "Returns user details",
     validate: { params: { id: IdSpec }, failAction: validationError },
     response: { schema: UserSpecPlus, failAction: validationError },
+  },
+
+  getLoggedInUser: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const loggedInUser = await db.userStore.getUserById(request.auth.credentials._id);
+        if (!loggedInUser) {
+          return Boom.notFound("No User with this id");
+        }
+        return loggedInUser;
+      } catch (err) {
+        console.log(err);
+        return Boom.serverUnavailable("Server Error");
+      }
+    },
   },
 
   create: {
