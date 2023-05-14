@@ -12,6 +12,7 @@ import { userMongoStore } from "./mongo/user-mongo-store.js";
 import { placemarkMongoStore } from "./mongo/placemark-mongo-store.js";
 import { stationMongoStore } from "./mongo/station-mongo-store.js";
 import { messageMongoStore } from "./mongo/message-mongo-store.js";
+import { imageStore } from "./image-store.js";
 
 import { connectMongo } from "./mongo/connect.js";
 
@@ -20,6 +21,7 @@ export const db = {
   placemarkStore: null,
   stationStore: null,
   messageStore: null,
+  imageStore: null,
 
   init(storeType) {
     switch (storeType) {
@@ -34,6 +36,7 @@ export const db = {
         this.placemarkStore = placemarkMongoStore;
         this.stationStore = stationMongoStore;
         this.messageStore = messageMongoStore;
+        this.imageStore = imageStore;
         connectMongo();
         break;
       default:

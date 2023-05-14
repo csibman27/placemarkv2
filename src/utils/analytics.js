@@ -1,6 +1,15 @@
 import { db } from "../models/db.js";
 
 export const analytics = {
+  async allAnalytics() {
+    const getTotalPlacemarks = await analytics.getTotalPlacemarks();
+    const getTotalStations = await analytics.getTotalStations();
+    const getTotalUsers = await analytics.getTotalUsers();
+    const getCheapestPetrolPrice = await analytics.getCheapestPetrolPrice();
+    const getCheapestDieselPrice = await analytics.getCheapestDieselPrice();
+
+    return { getTotalPlacemarks, getTotalStations, getTotalUsers, getCheapestPetrolPrice, getCheapestDieselPrice };
+  },
   async getTotalPlacemarks() {
     const placemarks = await db.placemarkStore.getAllPlacemarks();
     const totalPlacemarks = placemarks.length;

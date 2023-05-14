@@ -38,6 +38,7 @@ export const webRoutes = [
   { method: "POST", path: "/station/{id}/updatestation/{stationid}", config: stationController.update },
 
   { method: "POST", path: "/placemark/{id}/uploadimage", config: placemarkController.uploadImage },
+  { method: "GET", path: "/placemark/{id}/deleteimage", config: placemarkController.deleteImage },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
 ];

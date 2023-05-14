@@ -70,4 +70,15 @@ export const placemarkController = {
       parse: true,
     },
   },
+
+  deleteImage: {
+    handler: async function (request, h) {
+      const placemark = await db.placemarkStore.getPlacemarkById(request.params.id);
+      await db.imageStore.deleteImage(placemark.imgid);
+      placemark.img = undefined;
+      placemark.imgid = undefined;
+      db.placemarkStore.updatePlacemark(placemark);
+      return h.redirect(`/placemark/${placemark._id}`);
+    },
+  },
 };
