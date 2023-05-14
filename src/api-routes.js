@@ -2,6 +2,7 @@ import { userApi } from "./api/user-api.js";
 import { placemarkApi } from "./api/placemark-api.js";
 import { stationApi } from "./api/station-api.js";
 import { analyticsApi } from "./api/analytics-api.js";
+import { accountsController } from "./controllers/accounts-controller.js";
 
 export const apiRoutes = [
   { method: "GET", path: "/api/users", config: userApi.find },
