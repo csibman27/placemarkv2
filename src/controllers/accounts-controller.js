@@ -134,7 +134,7 @@ export const accountsController = {
     if (!user) {
       return { isValid: false };
     }
-    return { isValid: true, credentials: user };
+    return { isValid: true, credentials: user, permissions: user.permission };
   },
 
   github: {

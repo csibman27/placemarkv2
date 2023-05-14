@@ -128,12 +128,11 @@ export const userApi = {
     auth: false,
     handler: async function (request, h) {
       try {
-        const user = await db.userStore.getUserByEmail(request.payload.email);
-        if (!user) {
+        const { email, password } = request.payload; // add for svelete access email field
+        const user = await db.userStore.getUserByEmail(email);
+        const passwordsMatch = await bcrypt.compare(password, user.password); // svelte to access pass field
+        if (!user || !passwordsMatch) {
           return Boom.unauthorized("User not found");
-        }
-        if (user.password !== request.payload.password) {
-          return Boom.unauthorized("Invalid password");
         }
         const token = createToken(user);
         return h.response({ success: true, token: token }).code(201);
