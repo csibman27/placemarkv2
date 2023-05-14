@@ -22,6 +22,24 @@ export const placemarkApi = {
     notes: "Returns all placemarks",
   },
 
+  findByUserId: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const placemarks = await db.placemarkStore.getUserPlacemarks(request.auth.credentials._id);
+        return placemarks;
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    response: { schema: PlacemarkArraySpec, failAction: validationError },
+    description: "Get all placemarks",
+    notes: "Returns all placemarks",
+  },
+
   findOne: {
     auth: {
       strategy: "jwt",
