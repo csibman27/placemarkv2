@@ -23,7 +23,7 @@ export const dashboardController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const placemarks = await db.placemarkStore.sortUserPlacemarks(loggedInUser._id);
-
+      //manage
       const viewData = {
         title: request.payload.title,
         user: loggedInUser,
