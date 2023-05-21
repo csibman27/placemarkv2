@@ -37,6 +37,13 @@ export const StationSpec = Joi.object()
     description: Joi.string().required().example("Belphi"),
     unleaded_price: Joi.number().allow("").optional().example(1.01),
     diesel_price: Joi.number().allow("").optional().example(0.98),
+    images: Joi.array().items(
+      Joi.object({
+        _id: IdSpec,
+        img: Joi.string(),
+        imgid: Joi.string(),
+      })
+    ),
     placemarkid: IdSpec,
   })
   .label("Station");
@@ -53,6 +60,8 @@ export const PlacemarkSpec = Joi.object()
     title: Joi.string().required().example("Kildare"),
     userid: IdSpec,
     stations: StationArraySpec,
+    img: Joi.string(),
+    imgid: Joi.string(),
   })
   .label("Placemark");
 

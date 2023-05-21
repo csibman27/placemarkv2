@@ -156,10 +156,11 @@ export const stationApi = {
     handler: async function (request, h) {
       try {
         const station = await db.stationStore.getStationById(request.params.id);
-        console.log("HELLO", station);
+        console.log("Adding image", station);
         const file = request.payload.imagefile;
         if (Object.keys(file).length > 0) {
           const response = await imageStore.uploadImage(request.payload.imagefile);
+          console.log(response);
           station.images.push({ img: response.url, imgid: response.public_id });
           db.stationStore.updateStation(station._id, station);
         }
@@ -189,7 +190,6 @@ export const stationApi = {
         await db.imageStore.deleteImage(request.params.imgid);
         console.log("station", station.images);
         station.images = station.images.filter((value) => value.imgid !== request.params.imgid);
-        console.log("AH", station.images);
         db.stationStore.updateStation(station._id, station);
         return h.response().code(200);
       } catch (err) {

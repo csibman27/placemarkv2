@@ -53,9 +53,10 @@ export const placemarkController = {
         const placemark = await db.placemarkStore.getPlacemarkById(request.params.id);
         const file = request.payload.imagefile;
         if (Object.keys(file).length > 0) {
-          const url = await imageStore.uploadImage(request.payload.imagefile);
-          placemark.img = url;
-          await db.placemarkStore.updatePlacemark(placemark);
+          const response = await imageStore.uploadImage(request.payload.imagefile);
+          placemark.img = response.url;
+          placemark.imgid = response.public_id;
+          db.placemarkStore.updatePlacemark(placemark);
         }
         return h.redirect(`/placemark/${placemark._id}`);
       } catch (err) {
