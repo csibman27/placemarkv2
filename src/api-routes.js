@@ -26,9 +26,11 @@ export const apiRoutes = [
   { method: "GET", path: "/api/placemarks/{id}/stations", config: stationApi.findStationsByPlacemarkId },
   { method: "POST", path: "/api/placemarks/{id}/stations", config: stationApi.create },
   { method: "POST", path: "/api/placemarks/{id}/stations/{stationid}", config: stationApi.updateStation },
+
   { method: "DELETE", path: "/api/stations", config: stationApi.deleteAll },
   { method: "DELETE", path: "/api/stations/{id}", config: stationApi.deleteOne },
   { method: "POST", path: "/api/stations/{id}/uploadimage", config: stationApi.uploadImage },
   { method: "DELETE", path: "/api/stations/{id}/deleteimage/{imgid}", config: stationApi.deleteImage },
+
   { method: "GET", path: "/api/analytics", config: analyticsApi.find },
 ];

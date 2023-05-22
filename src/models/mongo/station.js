@@ -14,6 +14,11 @@ const stationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Placemark",
   },
+  images:
+      [{
+        img: String,
+        imgid: String
+      }],
 });
 
 export const Station = Mongoose.model("Station", stationSchema);

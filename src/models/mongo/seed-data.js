@@ -48,52 +48,57 @@ export const seedData = {
     station_1: {
       title: "Texaco",
       lat: 53.4234,
-      lng: 7.2022,
+      lng: -7.2022,
       category: "station only",
       description: "Billing",
       unleaded_price: 2.3,
       diesel_price: 1.35,
       placemarkid: "->placemarks.Kildare",
+      images: [{img: "https://res.cloudinary.com/dwrmwujsb/image/upload/v1684792420/kk2_qdbhx7.jpg", imgid: "kk2_qdbhx7"}]
     },
     station_2: {
       title: "Maxoil",
       lat: 52.1234,
-      lng: 7.2922,
+      lng: -7.2922,
       category: "station only",
       description: "95 super",
       unleaded_price: 1.2,
       diesel_price: 1.15,
       placemarkid: "->placemarks.Kildare",
+      images: [{img: "https://res.cloudinary.com/dwrmwujsb/image/upload/v1684792420/kk1_n8ylow.jpg", imgid: "kk1_n8ylow"}]
     },
     station_3: {
       title: "Shell",
       lat: 51.1214,
-      lng: 8.2322,
+      lng: -8.2322,
       category: "station only",
       description: "97 extra",
       unleaded_price: 2.4,
       diesel_price: 1.29,
       placemarkid: "->placemarks.Kildare",
+      images: [{img: "https://res.cloudinary.com/dwrmwujsb/image/upload/v1684792631/kk4_bywpmv.jpg", imgid: "kk4_bywpmv"}]
     },
     station_4: {
       title: "Shell",
       lat: 53.1215,
-      lng: 7.2122,
+      lng: -7.2122,
       category: "super station",
       description: "95 petrol",
       unleaded_price: 1.99,
       diesel_price: 1.34,
       placemarkid: "->placemarks.Kilkenny",
+      images: [{img: "https://res.cloudinary.com/dwrmwujsb/image/upload/v1684792631/kk3_ablfft.jpg", imgid: "kk3_ablfft"}]
     },
     station_5: {
       title: "Mol",
       lat: 52.1115,
-      lng: 7.1122,
+      lng: -7.1122,
       category: "super station",
       description: "extra diesel",
       unleaded_price: 1.89,
       diesel_price: 1.77,
       placemarkid: "->placemarks.Kilkenny",
+      images: [{img: "https://res.cloudinary.com/dwrmwujsb/image/upload/v1684792631/kk5_zj4plb.jpg", imgid: "kk5_zj4plb"}]
     },
   },
   messages: {
